@@ -1,0 +1,3 @@
+# FakeSchool
+
+- Projeto em desenvolvimento para fins de estudo...
