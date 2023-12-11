@@ -1,22 +1,53 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*====== LAYOUT ======*/
+
+.header-layout {
+    background-color: #113945;
+    padding: 20px;
+    position:fixed;
+    width:100%;
+}
+
+    .header-layout > h1 {
+        color: white;
+    }
+
+.sidebar-layout {
+    background-color: #1C5B6F;
+    width: 259px;
+    position:fixed;
+    height:100%;
+}
+
+.container-layout {
+    display: flex;
+}
+
+.main-layout {
+    margin-left: 295px;
+    margin-top:130px;
+    width:77%;
 }
