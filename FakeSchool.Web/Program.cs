@@ -1,7 +1,26 @@
+using FakeSchool.Domain.Usuario;
+using FakeSchool.Infra.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+	config.AddEnvironmentVariables();
+});
+
+var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+
+var connectionString = $"Server={dbServer}\\SQLEXPRESS;Database=FakeSchool;Trusted_Connection=True;TrustServerCertificate=True";
+
+builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<BancoContext>().AddDefaultTokenProviders();
 
 var app = builder.Build();
 
