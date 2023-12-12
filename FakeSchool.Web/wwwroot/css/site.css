@@ -29,6 +29,7 @@ body {
     padding: 20px;
     position:fixed;
     width:100%;
+    z-index:10;
 }
 
     .header-layout > h1 {
@@ -40,6 +41,14 @@ body {
     width: 259px;
     position:fixed;
     height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.sidebar-layout > p {
+    color:white;
+    font-size:20px;
 }
 
 .container-layout {

@@ -1,5 +1,6 @@
 using FakeSchool.Domain.Usuario;
 using FakeSchool.Infra.Data;
+using FakeSchool.Infra.Services.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -22,6 +23,14 @@ builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer(conn
 
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<BancoContext>().AddDefaultTokenProviders();
 
+builder.Services.AddScoped<UsuarioService>();
+
+builder.Services.AddSession(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,10 +46,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Login}/{id?}");
+	pattern: "{controller=Usuario}/{action=Login}/{id?}");
 
 app.Run();
