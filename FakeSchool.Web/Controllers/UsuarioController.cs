@@ -24,6 +24,20 @@ namespace FakeSchool.Web.Controllers
 			return View();
 		}
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Login(UsuarioViewModel user)
+		{
+			var login = await _usuarioService.Logar(user.UserName, user.Senha);
+
+			if(login)
+			{
+                return RedirectToAction("Index", "Home");
+            }
+
+			return View("Login");
+		}
+
 		public IActionResult Cadastro()
 		{
 			var model = new UsuarioViewModel();

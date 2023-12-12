@@ -13,11 +13,13 @@ namespace FakeSchool.Infra.Services.Authentication
     public class UsuarioService
     {
         private UserManager<Usuario> _userManager;
+        private SignInManager<Usuario> _signInManager;
         private IMapper _mapper;
-        public UsuarioService(UserManager<Usuario> userManager, IMapper mapper)
+        public UsuarioService(UserManager<Usuario> userManager, IMapper mapper, SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _signInManager = signInManager;
         }
         public async Task<bool> CriarConta(UsuarioViewModel user)
         {
@@ -33,6 +35,19 @@ namespace FakeSchool.Infra.Services.Authentication
 
             return false;
 
+        }
+
+        public async Task<bool> Logar(string userName, string senha)
+        {
+
+            var login = await _signInManager.PasswordSignInAsync(userName, senha, false, false);
+
+            if (login.Succeeded)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
