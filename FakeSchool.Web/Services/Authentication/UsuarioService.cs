@@ -1,4 +1,6 @@
-﻿using FakeSchool.Domain.Usuario;
+﻿using AutoMapper;
+using FakeSchool.Domain.Usuario;
+using FakeSchool.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,16 +14,19 @@ namespace FakeSchool.Infra.Services.Authentication
     {
         private UserManager<Usuario> _userManager;
         private SignInManager<Usuario> _signInManager;
-        public UsuarioService(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
+        private IMapper _mapper;
+        public UsuarioService(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _mapper = mapper;
         }
-        public async Task<bool> Logar(string userName, string senha)
+        public async Task<bool> CriarConta(UsuarioViewModel user)
         {
 
-
-            var createAccount = await _signInManager.PasswordSignInAsync(userName, senha, false, false);
+            var userMap = _mapper.Map<Usuario>(user);
+            
+            var createAccount = await _userManager.CreateAsync(userMap, user.Senha);
 
             if (createAccount.Succeeded)
             {

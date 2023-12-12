@@ -29,6 +29,12 @@
                             </div>
                         </form>
                     </div>
+                    @if(ViewData["Falha"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Erro!</strong> @ViewData["Falha"]
+                        </div>
+                    }
                 </div>
             </div>
         </div>

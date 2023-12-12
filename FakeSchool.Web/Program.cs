@@ -23,6 +23,8 @@ builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer(conn
 
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<BancoContext>().AddDefaultTokenProviders();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddSession(o =>

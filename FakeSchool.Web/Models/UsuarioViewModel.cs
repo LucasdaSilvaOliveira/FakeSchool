@@ -10,5 +10,7 @@ namespace FakeSchool.Web.Models
 
         [Required(ErrorMessage = "Senha obrigatória!")]
         public string Senha { get; set; }
+
+        public DateTime DataCriacao { get; set; } = DateTime.Now;
     }
 }

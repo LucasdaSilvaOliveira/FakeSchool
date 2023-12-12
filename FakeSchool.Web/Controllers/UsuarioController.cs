@@ -31,14 +31,18 @@ namespace FakeSchool.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create(UsuarioViewModel model)
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(UsuarioViewModel user)
 		{
-			var createAccout = await _usuarioService.Logar(model.UserName, model.Senha);
+			var createAccout = await _usuarioService.CriarConta(user);
 
 			if(createAccout)
 			{
-				return RedirectToAction("Index", "Home");
+				ViewData["Sucesso"] = "Cadastro realizado com sucesso.";
+				return View("Login");
 			}
+
+			ViewData["Falha"] = "Houve erro ao cadastrar usuário!";
 			return RedirectToAction("Cadastro");
 		}
 	}

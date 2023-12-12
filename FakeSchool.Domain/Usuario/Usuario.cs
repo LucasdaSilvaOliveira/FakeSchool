@@ -14,8 +14,6 @@ namespace FakeSchool.Domain.Usuario
 
 		}
 
-		public virtual string Nome { get; set; }
-
 		public virtual DateTime DataCriacao { get; set; }
 	}
 }

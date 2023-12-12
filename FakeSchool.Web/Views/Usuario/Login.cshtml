@@ -26,6 +26,13 @@
                             </div>                          
                         </form>
                     </div>
+
+                    @if(ViewData["Sucesso"] != null)
+                    {
+                        <div class="alert alert-success">
+                            <strong>Sucesso!</strong> @ViewData["Sucessp"]
+                        </div>
+                    }
                 </div>
             </div>
         </div>
