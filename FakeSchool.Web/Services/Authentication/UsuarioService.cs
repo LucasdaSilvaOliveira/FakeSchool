@@ -13,12 +13,10 @@ namespace FakeSchool.Infra.Services.Authentication
     public class UsuarioService
     {
         private UserManager<Usuario> _userManager;
-        private SignInManager<Usuario> _signInManager;
         private IMapper _mapper;
-        public UsuarioService(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IMapper mapper)
+        public UsuarioService(UserManager<Usuario> userManager, IMapper mapper)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _mapper = mapper;
         }
         public async Task<bool> CriarConta(UsuarioViewModel user)
