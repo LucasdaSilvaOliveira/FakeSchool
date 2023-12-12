@@ -24,4 +24,8 @@
     <ProjectReference Include="..\FakeSchool.Infra\FakeSchool.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Aluno\Models\" />
+  </ItemGroup>
+
 </Project>
