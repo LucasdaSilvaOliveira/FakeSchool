@@ -60,3 +60,29 @@ body {
     margin-top:130px;
     width:77%;
 }
+
+/*===== LAYOUT AUTENTICADO =====*/
+
+.sidebar-layout-aut {
+    background-color: #1C5B6F;
+    width: 259px;
+    position: fixed;
+    height: 100%;
+    padding-top:160px;
+}
+
+.sidebar-layout-aut p {
+    padding:10px 5px;
+    margin:0px;
+    transition:all ease-in-out 100ms;
+    color:white;
+    text-shadow:1px 1px 3px #0000008c;
+    font-size:20px;
+}
+    .sidebar-layout-aut p:hover {
+        background-color:#7c98a1;
+    }
+
+    .sidebar-layout-aut a {
+        text-decoration: none;
+    }
