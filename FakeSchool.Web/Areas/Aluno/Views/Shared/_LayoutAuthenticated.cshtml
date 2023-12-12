@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FakeSchool</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FakeSchool.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="header-layout">
+            <h1>FakeSchool</h1>
+        </nav>
+    </header>
+    <div class="container-layout">
+        <div class="sidebar-layout-aut">
+            <nav>
+
+                <a asp-controller="Aluno" asp-action="Index">
+                    <p>Alunos</p>
+                </a>
+                <a asp-controller="Aluno" asp-action="Index">
+                    <p>Professores</p>
+                </a>
+                <a asp-controller="Aluno" asp-action="Index">
+                    <p>Turmas</p>
+                </a>
+                <a asp-controller="Aluno" asp-action="Index">
+                    <p>Matérias</p>
+                </a>
+                <a asp-controller="Aluno" asp-action="Index">
+                    <p>Eventos</p>
+                </a>
+            </nav>
+        </div>
+        <main role="main" class="pb-3 main-layout">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
