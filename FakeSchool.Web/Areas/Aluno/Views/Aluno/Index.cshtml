@@ -38,7 +38,7 @@
                             <td>@aluno.AnoLetivo°</td>
                             <td>
                                 <a asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Details</a>
-                                <a asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Edit</a>
+                                <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Edit</a>
                                 <a asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>

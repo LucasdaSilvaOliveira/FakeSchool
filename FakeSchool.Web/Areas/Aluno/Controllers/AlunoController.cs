@@ -52,5 +52,28 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
         
             return View(aluno);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var aluno = _alunoRepositorio.ObterPorId(id);
+
+            var model = _mapper.Map<FormAlunoViewModel>(aluno);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(FormAlunoViewModel aluno)
+        {
+            if (ModelState.IsValid)
+            {
+                var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
+                _alunoRepositorio.Atualizar(alunoMap);
+
+                return RedirectToAction("Index", "Aluno");
+            }
+            return View(aluno);
+        }
     }
 }
