@@ -3,16 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FakeSchool.Web.Areas.Aluno.Models
 {
-    public class AlunoViewModel
+    public class FormAlunoViewModel
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string Turma { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string Status { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int AnoLetivo { get; set; }
 
     }

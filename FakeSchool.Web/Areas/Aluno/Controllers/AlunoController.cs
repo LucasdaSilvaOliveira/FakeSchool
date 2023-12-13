@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Web.Areas.Aluno.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FakeSchool.Web.Modules.Aluno.Controllers
+namespace FakeSchool.Web.Areas.Aluno.Controllers
 {
     [Authorize]
     [Area("Aluno")]
@@ -24,7 +23,6 @@ namespace FakeSchool.Web.Modules.Aluno.Controllers
             var model = alunos.Select(x => new AlunoViewModel
             {
                 Id = x.Id,
-                Notas = x.Notas,
                 AnoLetivo = x.AnoLetivo,
                 Nome = x.Nome,
                 Status = x.Status,
@@ -32,6 +30,27 @@ namespace FakeSchool.Web.Modules.Aluno.Controllers
             }).ToList();
 
             return View(model);
+        }
+
+        public IActionResult Create()
+        {
+            var model = new FormAlunoViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(FormAlunoViewModel aluno)
+        {
+            if (ModelState.IsValid)
+            {
+                var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
+                _alunoRepositorio.CadastrarAluno(alunoMap);
+
+                return RedirectToAction("Index", "Aluno");
+            }
+        
+            return View(aluno);
         }
     }
 }
