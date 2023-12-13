@@ -22,7 +22,7 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
             return _bancoContext.Alunos.FirstOrDefault(x => x.Id == id);
         }
 
-        public ICollection<Aluno> ObterTodos()
+        public List<Aluno> ObterTodos()
         {
             return _bancoContext.Alunos.ToList();
         }

@@ -10,7 +10,7 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
     public interface IAlunoRepositorio
     {
         Aluno ObterPorId(int id);
-        ICollection<Aluno> ObterTodos();
+        List<Aluno> ObterTodos();
         void Atualizar(Aluno aluno);
         void Deletar(int id);
     }
