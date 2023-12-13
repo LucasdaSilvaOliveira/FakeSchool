@@ -9,6 +9,7 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
 {
     public interface IAlunoRepositorio
     {
+        void CadastrarAluno(Aluno aluno);
         Aluno ObterPorId(int id);
         List<Aluno> ObterTodos();
         void Atualizar(Aluno aluno);

@@ -39,5 +39,11 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
             _bancoContext.Alunos.Remove(aluno);
             _bancoContext.SaveChanges();
         }
+
+        public void CadastrarAluno(Aluno aluno)
+        {
+            _bancoContext.Alunos.Add(aluno);
+            _bancoContext.SaveChanges();
+        }
     }
 }
