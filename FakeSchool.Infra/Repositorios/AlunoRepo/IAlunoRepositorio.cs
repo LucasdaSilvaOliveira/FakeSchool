@@ -7,8 +7,11 @@ using FakeSchool.Domain.Escola;
 
 namespace FakeSchool.Infra.Repositorios.AlunoRepo
 {
-    public interface IAlunoRepositorio<Aluno>
+    public interface IAlunoRepositorio
     {
         Aluno ObterPorId(int id);
+        ICollection<Aluno> ObterTodos();
+        void Atualizar(Aluno aluno);
+        void Deletar(int id);
     }
 }
