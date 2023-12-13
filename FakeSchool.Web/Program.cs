@@ -1,5 +1,7 @@
+using FakeSchool.Domain.Escola;
 using FakeSchool.Domain.Usuario;
 using FakeSchool.Infra.Data;
+using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Infra.Services.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,16 +18,13 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
 });
 
 var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
-
 var connectionString = $"Server={dbServer}\\SQLEXPRESS;Database=FakeSchool;Trusted_Connection=True;TrustServerCertificate=True";
-
 builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<BancoContext>().AddDefaultTokenProviders();
-
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddSingleton<IAlunoRepositorio, AlunoRepositorio>();
 
 builder.Services.AddSession(o =>
 {
