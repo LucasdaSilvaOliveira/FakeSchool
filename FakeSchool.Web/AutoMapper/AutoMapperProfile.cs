@@ -12,6 +12,7 @@ namespace FakeSchool.Web.AutoMapper
         {
             CreateMap<Usuario, UsuarioViewModel>().ReverseMap();
             CreateMap<Aluno, AlunoViewModel>().ReverseMap();
+            CreateMap<Aluno, FormAlunoViewModel>().ReverseMap();
         }
     }
 }
