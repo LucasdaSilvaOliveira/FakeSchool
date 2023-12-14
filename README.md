@@ -9,7 +9,7 @@ O **FakeSchool** é um sistema de gerenciamento de uma escola. Permitindo o usu�
 ## Funcionalidades Principais
 
 - **Autenticação de Usuário:** Permite que os usuários criem suas contas e façam login de forma segura.
-- **Cadastro de Alunos, Professores e Matérias:** Possibilita o cadastro detalhado de alunos, professores e matérias.
+- **Cadastro de Alunos, Professores e Cursos:** Possibilita o cadastro detalhado de alunos, professores e cursos.
 - **Visualização do Sistema Gerenciado:** Apresenta uma tela para visualização dos dados cadastrados e persistidos no banco de dados, interligando as tabelas que possuem relacionamentos entre sí.
 
 ## Objetivo
