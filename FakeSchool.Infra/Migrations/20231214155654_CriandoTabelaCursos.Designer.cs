@@ -4,6 +4,7 @@ using FakeSchool.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakeSchool.Infra.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20231214155654_CriandoTabelaCursos")]
+    partial class CriandoTabelaCursos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +71,7 @@ namespace FakeSchool.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cursos");
+                    b.ToTable("Curso");
                 });
 
             modelBuilder.Entity("FakeSchool.Domain.Escola.Materia", b =>

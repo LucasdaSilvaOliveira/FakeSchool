@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,10 @@ namespace FakeSchool.Domain.Escola
 
 		public virtual string Nome { get; set; }
 
-		public virtual string Turma { get; set; }
+		public virtual int CursoId { get; set; }
+
+		[ForeignKey("CursoId")]
+		public virtual Curso Curso { get; set; }
 
 		public virtual string Status { get; set; }
 
