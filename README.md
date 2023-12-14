@@ -11,7 +11,7 @@ O **FakeSchool** é um sistema de gerenciamento de uma escola. Permitindo o usu�
 - **Autenticação de Usuário:** Permite que os usuários criem suas contas e façam login de forma segura.
 - **Cadastro de Alunos, Professores e Cursos:** Possibilita o cadastro detalhado de alunos, professores e cursos.
 - **Visualização do Sistema Gerenciado:** Apresenta uma tela para visualização dos dados cadastrados e persistidos no banco de dados, interligando as tabelas que possuem relacionamentos entre sí.
-- **Sistema de Aprovação de Aluno:** Sistema de aprovação de aluno, com status sendo definido para dizer a situação do aluno baseado no ano letivo que ele contém comparado a quantidade de anos de duração do curso em que ele está fazendo.
+- **Sistema de Aprovação de Aluno:** Sistema de aprovação de aluno, com status sendo definido para indicar a situação do aluno com base no ano letivo que ele está cursando em comparação com a quantidade de anos de duração do curso.
 
 ## Objetivo
 
