@@ -1,0 +1,45 @@
+﻿@model List<FakeSchool.Web.Areas.Curso.Models.CursoViewModel>
+@{
+    ViewData["Title"] = "FakeSchool - Cursos";
+}
+
+<div class="card">
+    <div class="card-body">
+        <a asp-controller="Curso" asp-action="Create" class="btn btn-sm btn-success mb-3">Cadastrar Curso</a>
+        <table class="table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tempo de Duração</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-secondary">
+                            <i>
+                                Sem cursos cadastrados.
+                            </i>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var curso in Model)
+                    {
+                        <tr>
+                            <td>@curso.Nome</td>
+                            <td>@curso.DuracaoAnos anos</td>
+                            <td>
+                                <a asp-controller="@curso.Id" asp-action="Edit" asp-route-id="@curso.Id" class="btn btn-sm btn-primary">Edit</a>
+                                <a asp-route-id="@curso.Id" class="btn btn-sm btn-danger">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
