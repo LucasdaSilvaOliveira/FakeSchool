@@ -19,9 +19,7 @@
                             <span asp-validation-for="Nome" class="text-danger"></span>
                         </div>
                         <div class="form-group mt-3">
-                            <label for="Turma">Turma:</label>
-                            <input type="text" class="form-control" id="Turma" asp-for="Turma" placeholder="Digite a turma do aluno">
-                            <span asp-validation-for="Turma" class="text-danger"></span>
+                            @Html.DropDownList("CursoId", (List<SelectListItem>)ViewBag.Cursos, "Selecione um item", new { @class = "form-control" })
                         </div>
                         <div class="form-group mt-3">
                             <label for="Status">Status:</label>
