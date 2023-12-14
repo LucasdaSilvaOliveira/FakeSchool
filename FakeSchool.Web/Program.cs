@@ -2,6 +2,7 @@ using FakeSchool.Domain.Escola;
 using FakeSchool.Domain.Usuario;
 using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
+using FakeSchool.Infra.Repositorios.CursoRepo;
 using FakeSchool.Infra.Services.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,9 @@ builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer(conn
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<BancoContext>().AddDefaultTokenProviders();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UsuarioService>();
+
 builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+builder.Services.AddScoped<ICursoRepositorio, CursoRepositorio>();
 
 builder.Services.AddSession(o =>
 {
