@@ -1,6 +1,7 @@
 ﻿using FakeSchool.Domain.Escola;
 using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
 
         public List<Aluno> ObterTodos()
         {
-            return _bancoContext.Alunos.ToList();
+            return _bancoContext.Alunos.Include(x => x.Curso).ToList();
         }
         public void Atualizar(Aluno aluno)
         {
