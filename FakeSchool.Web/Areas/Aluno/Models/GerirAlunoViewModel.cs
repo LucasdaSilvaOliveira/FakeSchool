@@ -8,6 +8,8 @@
 
         public string Curso { get; set; }
 
+        public int CursoId { get; set; }
+
         public string Status { get; set; }
 
         public int AnoLetivo { get; set; }

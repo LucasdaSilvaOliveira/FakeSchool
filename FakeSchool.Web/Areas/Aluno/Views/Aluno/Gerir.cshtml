@@ -1,10 +1,33 @@
-﻿
+﻿@model FakeSchool.Web.Areas.Aluno.Models.GerirAlunoViewModel
 @{
     ViewData["Title"] = "FakeSchool - Gerenciar status de aluno";
 }
 
 <div class="card">
     <div class="card-body">
-
+        <dl>
+            <dt>Nome: </dt>
+            <dd>@Model.Nome</dd>
+            <dt>Curso: </dt>
+            <dd>@Model.Curso</dd>
+        </dl>
+    </div>
+    <div>
+        <p>Tempo atual para término do curso<i>(Em anos)</i>: <strong><i>@Model.AnoLetivo/@Model.DuracaoAnos</i></strong></p>
+    </div>
+    <div>
+        <a asp-controller="Aluno" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+        @if (Model.AnoLetivo == Model.DuracaoAnos)
+        {
+            <a asp-controller="Aluno" asp-action="Formar" asp-route-id="@Model.Id" class="btn btn-sm btn-success">Formar Aluno</a>
+        }
+        else if (Model.AnoLetivo < Model.DuracaoAnos)
+        {
+            <a asp-controller="Aluno" asp-action="Aprovar" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Aprovar</a>
+        }
+        else if (Model.AnoLetivo > Model.DuracaoAnos)
+        {
+            <button class="btn btn-sm btn-outline-dark" disabled>Aluno formado</button>
+        }
     </div>
 </div>

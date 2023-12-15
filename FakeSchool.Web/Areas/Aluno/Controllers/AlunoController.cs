@@ -57,6 +57,7 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
 
                 return RedirectToAction("Index", "Aluno");
             }
+
             PreencherViewBagCursos();
             return View(aluno);
         }
@@ -105,11 +106,27 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
         {
             var aluno = _alunoRepositorio.ObterPorId(id);
 
-            var model = _mapper.Map<AlunoViewModel>(aluno);
+            var model = _mapper.Map<GerirAlunoViewModel>(aluno);
 
             return View(model);
         }
 
+        public IActionResult Aprovar(int id)
+        {
+            var aluno = _alunoRepositorio.ObterPorId(id);
+            var model = _mapper.Map<GerirAlunoViewModel>(aluno);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Aprovar(GerirAlunoViewModel aluno)
+        {
+            aluno.AnoLetivo++;
+            var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
+            _alunoRepositorio.Atualizar(alunoMap);
+            return RedirectToAction("Index","Aluno");
+        }
         private void PreencherViewBagCursos()
         {
             var cursos = _cursoRepositorio.ObterTodos();

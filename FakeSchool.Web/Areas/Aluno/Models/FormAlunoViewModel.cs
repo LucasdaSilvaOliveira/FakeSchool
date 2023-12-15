@@ -12,8 +12,7 @@ namespace FakeSchool.Web.Areas.Aluno.Models
 
         public int CursoId { get; set; }
 
-        [Required(ErrorMessage = "Campo obrigatório.")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int AnoLetivo { get; set; }
