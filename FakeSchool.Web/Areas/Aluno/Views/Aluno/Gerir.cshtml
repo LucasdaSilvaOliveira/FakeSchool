@@ -13,7 +13,14 @@
         </dl>
     </div>
     <div>
-        <p>Tempo atual para término do curso<i>(Em anos)</i>: <strong><i>@Model.AnoLetivo/@Model.DuracaoAnos</i></strong></p>
+        @if (Model.Status == "Formado")
+        {
+            <p>Tempo atual para término do curso<i>(Em anos)</i>: <strong><i>Curso finalizado.</i></strong></p>
+        }
+        else if (Model.Status == "Cursando")
+        {
+            <p>Tempo atual para término do curso<i>(Em anos)</i>: <strong><i>@Model.AnoLetivo/@Model.DuracaoAnos</i></strong></p>
+        }
     </div>
     <div>
         <a asp-controller="Aluno" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>

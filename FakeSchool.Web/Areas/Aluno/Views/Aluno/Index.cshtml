@@ -6,6 +6,7 @@
 <div class="card">
     <div class="card-body">
         <a asp-controller="Aluno" asp-action="Create" class="btn btn-sm btn-success mb-3">Cadastrar Aluno</a>
+        <h3 class="text-secondary">Alunos Cursando</h3>
         <table class="table table-primary table-striped">
             <thead>
                 <tr>
@@ -31,17 +32,63 @@
                 {
                     @foreach (var aluno in Model)
                     {
-                        <tr>
-                            <td>@aluno.Nome</td>
-                            <td>@aluno.Curso</td>
-                            <td>@aluno.AnoLetivo°</td>
-                            <td>@aluno.Status</td>
-                            <td>
-                                <a asp-controller="Aluno" asp-action="Gerir" asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Gerir</a>
-                                <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Editar</a>
-                                <a asp-controller="Aluno" asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remover</a>
-                            </td>
-                        </tr>
+                        @if(aluno.Status == "Cursando")
+                        {
+                            <tr>
+                                <td>@aluno.Nome</td>
+                                <td>@aluno.Curso</td>
+                                <td>@aluno.AnoLetivo°</td>
+                                <td>@aluno.Status</td>
+                                <td>
+                                    <a asp-controller="Aluno" asp-action="Gerir" asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Gerir</a>
+                                    <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Editar</a>
+                                    <a asp-controller="Aluno" asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remover</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+        <h3 class="text-secondary">Alunos Formados</h3>
+        <table class="table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-secondary">
+                            <i>
+                                Sem alunos cadastrados.
+                            </i>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var aluno in Model)
+                    {
+                        @if (aluno.Status == "Formado")
+                        {
+                            <tr>
+                                <td>@aluno.Nome</td>
+                                <td>@aluno.Curso</td>
+                                <td>@aluno.Status</td>
+                                <td>
+                                    <a asp-controller="Aluno" asp-action="Gerir" asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Gerir</a>
+                                    <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Editar</a>
+                                    <a asp-controller="Aluno" asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remover</a>
+                                </td>
+                            </tr>
+                        }
                     }
                 }
             </tbody>

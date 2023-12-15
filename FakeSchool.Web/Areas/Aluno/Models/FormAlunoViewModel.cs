@@ -17,5 +17,7 @@ namespace FakeSchool.Web.Areas.Aluno.Models
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int AnoLetivo { get; set; }
 
+        public int DuracaoAnos { get; set; }
+
     }
 }

@@ -77,6 +77,10 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(aluno.AnoLetivo <= aluno.DuracaoAnos)
+                {
+                    aluno.Status = "Cursando";
+                }
                 var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
                 _alunoRepositorio.Atualizar(alunoMap);
 
@@ -125,7 +129,25 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
             aluno.AnoLetivo++;
             var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
             _alunoRepositorio.Atualizar(alunoMap);
-            return RedirectToAction("Index","Aluno");
+            return RedirectToAction("Index", "Aluno");
+        }
+
+        public IActionResult Formar(int id)
+        {
+            var aluno = _alunoRepositorio.ObterPorId(id);
+            var model = _mapper.Map<GerirAlunoViewModel>(aluno);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Formar(GerirAlunoViewModel aluno)
+        {
+            aluno.AnoLetivo++;
+            aluno.Status = "Formado";
+            var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
+            _alunoRepositorio.Atualizar(alunoMap);
+            return RedirectToAction("Index", "Aluno");
         }
         private void PreencherViewBagCursos()
         {
