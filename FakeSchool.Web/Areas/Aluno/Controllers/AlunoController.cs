@@ -85,6 +85,31 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
             return View(aluno);
         }
 
+        public IActionResult Delete(int id)
+        {
+            var aluno = _alunoRepositorio.ObterPorId(id);
+            var model = _mapper.Map<AlunoViewModel>(aluno);
+
+            return View(model);
+        }
+
+        [ActionName("DeleteConfirmed")]
+        public IActionResult Delete(AlunoViewModel aluno)
+        {
+            _alunoRepositorio.Deletar(aluno.Id);
+
+            return RedirectToAction("Index", "Aluno");
+        }
+
+        public IActionResult Gerir(int id)
+        {
+            var aluno = _alunoRepositorio.ObterPorId(id);
+
+            var model = _mapper.Map<AlunoViewModel>(aluno);
+
+            return View(model);
+        }
+
         private void PreencherViewBagCursos()
         {
             var cursos = _cursoRepositorio.ObterTodos();

@@ -12,7 +12,7 @@ namespace FakeSchool.Web.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<Usuario, UsuarioViewModel>().ReverseMap();
-            CreateMap<Aluno, AlunoViewModel>().ReverseMap();
+            CreateMap<AlunoViewModel, Aluno>().ReverseMap().ForMember(dest => dest.Curso, opt => opt.MapFrom(src => src.Curso.Nome));
             CreateMap<Aluno, FormAlunoViewModel>().ReverseMap();
             CreateMap<Curso, CursoViewModel>().ReverseMap();
             CreateMap<Curso, FormCursoViewModel>().ReverseMap();

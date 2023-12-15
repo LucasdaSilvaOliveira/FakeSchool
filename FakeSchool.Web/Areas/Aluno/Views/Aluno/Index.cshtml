@@ -11,8 +11,8 @@
                 <tr>
                     <th>Nome</th>
                     <th>Curso</th>
-                    <th>Status</th>
                     <th>Ano Letivo</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,12 +34,12 @@
                         <tr>
                             <td>@aluno.Nome</td>
                             <td>@aluno.Curso</td>
-                            <td>@aluno.Status</td>
                             <td>@aluno.AnoLetivo°</td>
+                            <td>@aluno.Status</td>
                             <td>
-                                <a asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Details</a>
-                                <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Edit</a>
-                                <a asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remove</a>
+                                <a asp-controller="Aluno" asp-action="Gerir" asp-route-id="@aluno.Id" class="btn btn-sm btn-warning">Gerir</a>
+                                <a asp-controller="Aluno" asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-sm btn-primary">Editar</a>
+                                <a asp-controller="Aluno" asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-sm btn-danger">Remover</a>
                             </td>
                         </tr>
                     }

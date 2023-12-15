@@ -20,7 +20,7 @@ namespace FakeSchool.Infra.Repositorios.AlunoRepo
 
         public Aluno ObterPorId(int id)
         {
-            return _bancoContext.Alunos.FirstOrDefault(x => x.Id == id);
+            return _bancoContext.Alunos.Include(x => x.Curso).FirstOrDefault(x => x.Id == id);
         }
 
         public List<Aluno> ObterTodos()
