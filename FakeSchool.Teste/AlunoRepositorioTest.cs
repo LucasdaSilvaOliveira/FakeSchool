@@ -2,6 +2,7 @@
 using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Infra.Repositorios.CursoRepo;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,33 @@ namespace FakeSchool.Teste
 
             // Assert
             Assert.Equal(2, listaAluno.Count);
+        }
+
+        [Fact]
+        public void AtualizandoAluno()
+        {
+            // Arrange
+            var mockAlunoRepositorio = new Mock<IAlunoRepositorio>();
+
+            var alunoMock = new Aluno
+            {
+                Id = 1,
+                AnoLetivo = 3,
+                CursoId = 1,
+                Nome = "Lucas",
+                Status = "Cursando"
+            };
+
+            alunoMock.Nome = "Luck";
+
+            mockAlunoRepositorio.Setup(x => x.Atualizar(alunoMock));
+
+            // Act
+            mockAlunoRepositorio.Object.Atualizar(alunoMock);
+
+            //Assert
+            mockAlunoRepositorio.Verify(x => x.Atualizar(alunoMock), Times.Once);
+            Assert.Contains("Luck", alunoMock.Nome);
         }
     }
 }
