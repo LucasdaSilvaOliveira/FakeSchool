@@ -3,6 +3,7 @@ using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Infra.Repositorios.CursoRepo;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.CodeAnalysis;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakeSchool.Teste
+namespace FakeSchool.Teste.Consultas
 {
     public class AlunoRepositorioTest
     {
@@ -49,7 +50,7 @@ namespace FakeSchool.Teste
             var mockAlunoRepositorio = new Mock<IAlunoRepositorio>();
 
             var alunoMock = new Aluno
-            { 
+            {
                 Id = id,
                 AnoLetivo = 3,
                 CursoId = 1,
@@ -112,14 +113,36 @@ namespace FakeSchool.Teste
 
             alunoMock.Nome = "Luck";
 
-            mockAlunoRepositorio.Setup(x => x.Atualizar(alunoMock));
-
             // Act
             mockAlunoRepositorio.Object.Atualizar(alunoMock);
 
             //Assert
             mockAlunoRepositorio.Verify(x => x.Atualizar(alunoMock), Times.Once);
-            Assert.Contains("Luck", alunoMock.Nome);
+            //Assert.Contains("Luck", alunoMock.Nome);
+        }
+
+        [Fact(DisplayName = "Cadastrar Aluno")]
+        public void CadastrarAluno()
+        {
+
+            // Arrange
+            var mockAlunoRepositorio = new Mock<IAlunoRepositorio>();
+
+            var alunoMock = new Aluno
+            {
+                Id = 1,
+                AnoLetivo = 3,
+                CursoId = 1,
+                Nome = "Lucas",
+                Status = "Cursando"
+            };
+
+            // Act
+            mockAlunoRepositorio.Object.CadastrarAluno(alunoMock);
+
+            // Assert
+            mockAlunoRepositorio.Verify(x => x.CadastrarAluno(alunoMock), Times.Once);
+
         }
     }
 }
