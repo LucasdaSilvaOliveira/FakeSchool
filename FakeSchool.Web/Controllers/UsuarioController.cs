@@ -52,11 +52,11 @@ namespace FakeSchool.Web.Controllers
 
 			if(createAccout)
 			{
-				ViewData["Sucesso"] = "Cadastro realizado com sucesso.";
+				TempData["Sucesso"] = "Cadastro realizado com sucesso.";
 				return View("Login");
 			}
 
-			ViewData["Falha"] = "Houve erro ao cadastrar usuário!";
+			TempData["Falha"] = "Houve erro ao cadastrar usuário!";
 			return RedirectToAction("Cadastro");
 		}
 	}

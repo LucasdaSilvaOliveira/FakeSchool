@@ -27,10 +27,10 @@
                         </form>
                     </div>
 
-                    @if(ViewData["Sucesso"] != null)
+                    @if(TempData["Sucesso"] != null)
                     {
                         <div class="alert alert-success">
-                            <strong>Sucesso!</strong> @ViewData["Sucessp"]
+                            <strong>Sucesso!</strong> @TempData["Sucesso"]
                         </div>
                     }
                 </div>

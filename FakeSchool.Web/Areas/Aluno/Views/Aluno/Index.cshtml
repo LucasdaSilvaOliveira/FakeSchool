@@ -3,6 +3,13 @@
     ViewData["Title"] = "FakeSchool - Alunos";
 }
 
+@if (TempData["sucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["sucesso"]
+    </div>
+}
+
 <div class="card">
     <div class="card-body">
         <a asp-controller="Aluno" asp-action="Create" class="btn btn-sm btn-success mb-3">Cadastrar Aluno</a>
@@ -32,7 +39,7 @@
                 {
                     @foreach (var aluno in Model)
                     {
-                        @if(aluno.Status == "Cursando")
+                        @if (aluno.Status == "Cursando")
                         {
                             <tr>
                                 <td>@aluno.Nome</td>

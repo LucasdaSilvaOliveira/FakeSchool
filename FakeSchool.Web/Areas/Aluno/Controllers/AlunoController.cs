@@ -55,6 +55,8 @@ namespace FakeSchool.Web.Areas.Aluno.Controllers
                 var alunoMap = _mapper.Map<FakeSchool.Domain.Escola.Aluno>(aluno);
                 _alunoRepositorio.CadastrarAluno(alunoMap);
 
+                TempData["sucesso"] = "Aluno cadastrado com sucesso!";
+
                 return RedirectToAction("Index", "Aluno");
             }
 

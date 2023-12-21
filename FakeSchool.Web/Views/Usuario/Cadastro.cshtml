@@ -29,10 +29,10 @@
                             </div>
                         </form>
                     </div>
-                    @if(ViewData["Falha"] != null)
+                    @if(TempData["Falha"] != null)
                     {
                         <div class="alert alert-danger">
-                            <strong>Erro!</strong> @ViewData["Falha"]
+                            <strong>Erro!</strong> @TempData["Falha"]
                         </div>
                     }
                 </div>
