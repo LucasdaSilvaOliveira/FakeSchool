@@ -21,7 +21,7 @@ Este projeto foi desenvolvido como um ambiente de aplicação prática dos conhe
 ## Tecnologias Utilizadas
 
 - Linguagem de programação: *C#, JavaScript*
-- Frameworks ou Bibliotecas: *Entity Framework, Identity, AutoMapper, xUnit, Selenium*
+- Frameworks ou Bibliotecas: *Entity Framework, Identity, AutoMapper, xUnit, Selenium, Moq*
 - Banco de Dados: *SQL Server*
 
 ## Contribuições
