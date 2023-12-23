@@ -12,6 +12,7 @@ O **FakeSchool** é um sistema de gerenciamento de uma escola. Permitindo o usu�
 - **Cadastro de Alunos, Professores e Cursos:** Possibilita o cadastro detalhado de alunos, professores e cursos.
 - **Visualização do Sistema Gerenciado:** Apresenta uma tela para visualização dos dados cadastrados e persistidos no banco de dados, interligando as tabelas que possuem relacionamentos entre sí.
 - **Sistema de Aprovação de Aluno:** Sistema de aprovação de aluno, com status sendo definido para indicar a situação do aluno com base no ano letivo que ele está cursando em comparação com a quantidade de anos de duração do curso.
+- **Testes Unitários e Testes de Interface de Usuário:** Implementação de testes unitários com xUnit e testes de interface de usuário com Selenium.
 
 ## Objetivo
 
@@ -20,7 +21,7 @@ Este projeto foi desenvolvido como um ambiente de aplicação prática dos conhe
 ## Tecnologias Utilizadas
 
 - Linguagem de programação: *C#, JavaScript*
-- Frameworks ou Bibliotecas: *Entity Framework, Identity, AutoMapper, xUnit, Selenium*
+- Frameworks ou Bibliotecas: *Entity Framework, Identity, AutoMapper, xUnit, Selenium, Moq*
 - Banco de Dados: *SQL Server*
 
 ## Contribuições
