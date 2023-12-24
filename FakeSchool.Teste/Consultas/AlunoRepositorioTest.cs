@@ -118,7 +118,8 @@ namespace FakeSchool.Teste.Consultas
 
             //Assert
             mockAlunoRepositorio.Verify(x => x.Atualizar(alunoMock), Times.Once);
-            //Assert.Contains("Luck", alunoMock.Nome);
+
+            Assert.Equal("Luck", alunoMock.Nome);
         }
 
         [Fact(DisplayName = "Cadastrar Aluno")]
