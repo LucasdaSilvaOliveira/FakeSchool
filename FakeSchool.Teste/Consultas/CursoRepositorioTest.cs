@@ -33,6 +33,25 @@ namespace FakeSchool.Teste.Consultas
             Assert.NotNull(cursos);
         }
 
+        [Theory(DisplayName = "Obetendo curso com vários Ids")]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        public void ObtendoCursoComVariosIds(int id)
+        {
+            var mockCursoRepositorio = new Mock<ICursoRepositorio>();
+
+            var cursoMock = new Curso { Id = id, Nome = "ADS", DuracaoAnos = 3 };
+
+            mockCursoRepositorio.Setup(x => x.ObterPorId(id)).Returns(cursoMock);
+
+            var cursoRetornado = mockCursoRepositorio.Object.ObterPorId(id);
+
+            Assert.Equal(cursoMock.Id, cursoRetornado.Id);
+            Assert.Equal(cursoMock.Nome, cursoRetornado.Nome);
+            Assert.Equal(cursoMock.DuracaoAnos, cursoRetornado.DuracaoAnos);
+        }
+
         [Fact]
         public void DeletandoCurso()
         {
@@ -49,7 +68,7 @@ namespace FakeSchool.Teste.Consultas
             {
                 var curso = listaCurso.FirstOrDefault(x => x.Id == id);
 
-                if(curso != null)
+                if (curso != null)
                 {
                     listaCurso.Remove(curso);
                 }
