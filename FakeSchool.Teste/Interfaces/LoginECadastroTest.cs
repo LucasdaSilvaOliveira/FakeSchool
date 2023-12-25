@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FakeSchool.Teste.Fixtures;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace FakeSchool.Teste.Interfaces
 {
-    public class LoginECadastroTest : IDisposable
+    public class LoginECadastroTest : IClassFixture<TestFixtures>
     {
-        private ChromeDriver _driver;
+        private IWebDriver _driver;
 
-        public LoginECadastroTest()
+        public LoginECadastroTest(TestFixtures fixtures)
         {
-            _driver = new ChromeDriver();
+            _driver = fixtures.driver;
         }
-        public void Dispose()
-        {
-            _driver.Quit();
-        }
-
+    
         [Fact]
         public void FazendoLoginComSucesso()
         {
