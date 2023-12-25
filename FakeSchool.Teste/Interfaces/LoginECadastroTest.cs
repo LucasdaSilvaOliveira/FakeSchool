@@ -8,25 +8,35 @@ using System.Threading.Tasks;
 
 namespace FakeSchool.Teste.Interfaces
 {
-    public class LoginECadastroTest
+    public class LoginECadastroTest : IDisposable
     {
+        private ChromeDriver _driver;
+
+        public LoginECadastroTest()
+        {
+            _driver = new ChromeDriver();
+        }
+        public void Dispose()
+        {
+            _driver.Quit();
+        }
+
         [Fact]
         public void FazendoLoginComSucesso()
         {
-            var driver = new ChromeDriver();
 
-            driver.Navigate().GoToUrl("https://localhost:44304/");
+            _driver.Navigate().GoToUrl("https://localhost:44304/");
 
-            var btnLogin = driver.FindElement(By.ClassName("btn-primary"));
-            var inputUserName = driver.FindElement(By.Id("UserName"));
-            var inputSenha = driver.FindElement(By.Id("Senha"));
+            var btnLogin = _driver.FindElement(By.ClassName("btn-primary"));
+            var inputUserName = _driver.FindElement(By.Id("UserName"));
+            var inputSenha = _driver.FindElement(By.Id("Senha"));
 
             inputUserName.SendKeys("teste");
             inputSenha.SendKeys("Senha123@");
 
             btnLogin.Click();
 
-            Assert.Contains("Página principal", driver.Title);
+            Assert.Contains("Página principal", _driver.Title);
         }
     }
 }
