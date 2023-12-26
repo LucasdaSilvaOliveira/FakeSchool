@@ -1,6 +1,5 @@
 ﻿using FakeSchool.Teste.Fixtures;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +9,18 @@ using System.Threading.Tasks;
 namespace FakeSchool.Teste.Interfaces
 {
     [Collection("Chrome Driver")]
-    public class LoginECadastroTest
+    public class TelaPrincipalTest
     {
         private IWebDriver _driver;
-
-        public LoginECadastroTest(TestFixture fixtures)
+        public TelaPrincipalTest(TestFixture fixture)
         {
-            _driver = fixtures.driver;
+            _driver = fixture.driver;
         }
-    
+
         [Fact]
-        public void FazendoLoginComSucesso()
+        public void NavegandoParaTelaDeCursos()
         {
-
             _driver.Navigate().GoToUrl("https://localhost:44304/");
-
             var btnLogin = _driver.FindElement(By.ClassName("btn-primary"));
             var inputUserName = _driver.FindElement(By.Id("UserName"));
             var inputSenha = _driver.FindElement(By.Id("Senha"));
@@ -34,7 +30,10 @@ namespace FakeSchool.Teste.Interfaces
 
             btnLogin.Click();
 
-            Assert.Contains("Página principal", _driver.Title);
+            var btnCurso = _driver.FindElement(By.Id("btn-cursos"));
+
+            btnCurso.Click();
+            Assert.Contains("Cursos", _driver.Title);
         }
     }
 }

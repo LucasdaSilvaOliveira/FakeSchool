@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace FakeSchool.Teste.Fixtures
 {
-    public class TestFixtures : IDisposable
+    public class TestFixture : IDisposable
     {
         public IWebDriver driver{ get; set; }
 
-        public TestFixtures(IWebDriver _driver)
+        public TestFixture()
         {
-            driver = _driver;
+            driver = new ChromeDriver();
         }
 
         public void Dispose()
