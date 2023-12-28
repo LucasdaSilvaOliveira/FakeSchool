@@ -3,6 +3,7 @@ using FakeSchool.Domain.Usuario;
 using FakeSchool.Infra.Data;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Infra.Repositorios.CursoRepo;
+using FakeSchool.Infra.Repositorios.ProfessorRepo;
 using FakeSchool.Infra.Services.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
 builder.Services.AddScoped<ICursoRepositorio, CursoRepositorio>();
+builder.Services.AddScoped<IProfessorRepositorio, ProfessorRepositorio>();
 
 builder.Services.AddSession(o =>
 {
