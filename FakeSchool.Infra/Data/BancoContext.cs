@@ -10,19 +10,15 @@ using System.Threading.Tasks;
 
 namespace FakeSchool.Infra.Data
 {
-	public class BancoContext : IdentityDbContext<Usuario>
-	{
-		public BancoContext(DbContextOptions<BancoContext> options) : base(options)
-		{
+    public class BancoContext : IdentityDbContext<Usuario>
+    {
+        public BancoContext(DbContextOptions<BancoContext> options) : base(options) { }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Nota> Notas { get; set; }
+        public DbSet<Curso> Cursos { get; set; }
+        public DbSet<Professor> Professores { get; set; }
 
-		}
-
-
-		public DbSet<Usuario> Usuarios { get; set; }
-		public DbSet<Aluno> Alunos { get; set; }
-		public DbSet<Materia> Materias { get; set; }
-		public DbSet<Nota> Notas{ get; set; }
-		public DbSet<Curso> Cursos { get; set; }
-		
-	}
+    }
 }
