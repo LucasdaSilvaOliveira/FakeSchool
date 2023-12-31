@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper;
 using FakeSchool.Domain.Escola;
 using FakeSchool.Infra.Repositorios.AlunoRepo;
 using FakeSchool.Infra.Repositorios.CursoRepo;

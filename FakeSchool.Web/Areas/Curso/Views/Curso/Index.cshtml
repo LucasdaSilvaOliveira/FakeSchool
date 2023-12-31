@@ -34,7 +34,7 @@
                             <td>@curso.DuracaoAnos anos</td>
                             <td>
                                 <a asp-controller="Curso" asp-action="Edit" asp-route-id="@curso.Id" class="btn btn-sm btn-primary">Edit</a>
-                                <a asp-route-id="@curso.Id" class="btn btn-sm btn-danger">Remove</a>
+                                <a asp-controller="Curso" asp-action="Delete" asp-route-id="@curso.Id" class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>
                     }
