@@ -1,4 +1,5 @@
 ﻿using FakeSchool.Teste.Fixtures;
+using FakeSchool.Teste.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -23,7 +24,8 @@ namespace FakeSchool.Teste.Interfaces
         public void FazendoLoginComSucesso()
         {
 
-            _driver.Navigate().GoToUrl("https://localhost:44304/");
+            var loginPO = new LoginPO(_driver);
+            loginPO.Navegar();
 
             var btnLogin = _driver.FindElement(By.ClassName("btn-primary"));
             var inputUserName = _driver.FindElement(By.Id("UserName"));
