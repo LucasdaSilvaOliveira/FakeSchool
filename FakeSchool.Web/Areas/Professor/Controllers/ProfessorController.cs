@@ -50,5 +50,22 @@ namespace FakeSchool.Web.Areas.Professor.Controllers
             }
             return View(model);
         }
+
+        public IActionResult Delete(int id)
+        {
+            var professor = _professorRepositorio.ObterPorId(id);
+
+            var model = _mapper.Map<ProfessorViewModel>(professor);
+            return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(ProfessorViewModel model)
+        {
+            var professor = _mapper.Map<FakeSchool.Domain.Escola.Professor>(model);
+
+            _professorRepositorio.Deletar(professor.Id);
+            return RedirectToAction("Index", "Professor");
+        }
     }
 }

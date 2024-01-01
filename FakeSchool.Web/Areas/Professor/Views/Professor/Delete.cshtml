@@ -1,0 +1,19 @@
+﻿@model FakeSchool.Web.Areas.Professor.Models.ProfessorViewModel
+@{
+    ViewData["Title"] = "Remover aluno";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="text-secondary">Deseja remover este item?</h3>
+        <dl>
+            <dt>Nome: </dt>
+            <dd>@Model.Nome</dd>
+        </dl>
+        <form asp-controller="Professor" asp-action="DeleteConfirmed">
+            <input type="hidden" asp-for="Id"/>
+            <a asp-controller="Professor" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+            <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
+        </form>
+    </div>
+</div>
