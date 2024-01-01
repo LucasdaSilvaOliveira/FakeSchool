@@ -1,19 +1,13 @@
 ﻿using FakeSchool.Domain.Escola;
-using FakeSchool.Infra.Repositorios.CursoRepo;
 using FakeSchool.Infra.Repositorios.ProfessorRepo;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FakeSchool.Teste.Consultas
 {
     public class ProfessorRepositorioTest
     {
-        [Fact]
-        public void TestaObterProfessorPorId()
+        [Fact(DisplayName = "Teste que obtém professor por Id")]
+        public void TesteObterProfessorPorId()
         {
             var mockProfessorRepositorio = new Mock<IProfessorRepositorio>();
 
@@ -27,7 +21,7 @@ namespace FakeSchool.Teste.Consultas
         }
 
         [Fact(DisplayName = "Teste que obtém todos os professores")]
-        public void TestaObterTodosProfessores()
+        public void TesteObterTodosProfessores()
         {
             var mockProfessorRepositorio = new Mock<IProfessorRepositorio>();
 
@@ -74,5 +68,24 @@ namespace FakeSchool.Teste.Consultas
 
             Assert.Equal(2, listaProfessoresMoq.Count);
         }
+
+        [Fact(DisplayName = "Teste de atualização de professor")]
+        public void TesteAtualizacaoProfessor()
+        {
+            var mockProfessorRepositorio = new Mock<IProfessorRepositorio>();
+
+            var professorMock = new Professor
+            {
+                Id = 1,
+                Nome = "Antonio Carlos"
+            };
+
+            mockProfessorRepositorio.Setup(x => x.Atualizar(It.IsAny<Professor>()));
+
+            mockProfessorRepositorio.Object.Atualizar(professorMock);
+
+            mockProfessorRepositorio.Verify(x => x.Atualizar(professorMock), Times.Once);
+        }
+
     }
 }
