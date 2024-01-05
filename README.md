@@ -4,7 +4,7 @@ O **FakeSchool** é um projeto desenvolvido para fins de estudo.
 
 ## Sobre o Projeto
 
-O **FakeSchool** é um sistema de gerenciamento de uma escola. Permitindo o usuário a gerenciar alunos, professores, matérias e notas.
+O **FakeSchool** é um sistema de gerenciamento de uma escola. Permitindo o usuário a gerenciar alunos, professores, matérias e notas. Projeto feito seguindo o conceito de DDD.
 
 ## Funcionalidades Principais
 
