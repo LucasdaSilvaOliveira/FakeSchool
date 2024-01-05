@@ -67,5 +67,28 @@ namespace FakeSchool.Web.Areas.Professor.Controllers
             _professorRepositorio.Deletar(professor.Id);
             return RedirectToAction("Index", "Professor");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var professor = _professorRepositorio.ObterPorId(id);
+
+            var model = _mapper.Map<ProfessorViewModel>(professor);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(ProfessorViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var professor = _mapper.Map<FakeSchool.Domain.Escola.Professor>(model);
+
+                _professorRepositorio.Atualizar(professor);
+                return RedirectToAction("Index", "Professor");
+            }
+            return View(model);
+        }
     }
 }
