@@ -47,7 +47,7 @@ namespace FakeSchool.Teste.Integração
                         AnoLetivo = 3,
                         Nome = "Alex Rodrigues",
                         Status = "Cursando",
-                        Curso = new Domain.Escola.Curso { Id = 3, Nome = "Tal", DuracaoAnos = 1 }
+                        Curso = new Domain.Escola.Curso { Id = 4, Nome = "Tal", DuracaoAnos = 1 }
                     });
                 context.SaveChanges();
 

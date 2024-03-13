@@ -1,0 +1,82 @@
+﻿@model FakeSchool.Web.Areas.DisparoEmail.Models.DisparoEmailViewModel
+@{
+    ViewData["Title"] = "Disparo de E-mail";
+}
+
+<div class="mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Cadastro de Curso</h3>
+                </div>
+                <div class="card-body">
+                    <form action ="https://formmail.kinghost.net/formmail.cgi" method="POST">
+
+                        <input type="hidden" name="email" value="punchbass22@gmail.com"/>
+                        <input type="hidden" name="replyto" value="punchbass22@gmail.com"/>
+                        <input type="hidden" name="redirect" value="https://localhost:44304/DisparoEmail/DisparoEmail">
+
+                        <div class="form-group">
+                            <label>Destinatário</label>
+                            <input type="email" class="form-control" name="recipient" placeholder="Digite o e-mail do destinatário">
+                        </div>
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="Nome" placeholder="Digite o seu nome">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Assunto</label>
+                            <input type="text" class="form-control" name="subject" placeholder="Digite o assunto do e-mail">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Conteúdo</label>
+                            <input type="text" class="form-control" name="Conteudo" placeholder="Digite o conteúdo do e-mail">
+                        </div>
+                        <div class="mt-3">
+                            <a asp-controller="DisparoEmail" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                            <button name="BTEnvia" type="submit" class="btn btn-sm btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* 
+<div class="mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Cadastro de Curso</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Disparar" method="post">
+                     @*    <input type="hidden" name="email" value="punchbass22@gmail.com"/>
+                        <input type="hidden" name="replyto" value="punchbass22@gmail.com"/>
+
+                        <input type="hidden" asp-for="Remetente" value="punchbass22@gmail.com" />
+
+                        <div class="form-group">
+                            <label>Destinatário</label>
+                            <input type="email" class="form-control" asp-for="Destinatario" placeholder="Digite o e-mail do destinatário">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Assunto</label>
+                            <input type="text" class="form-control" asp-for="Assunto" placeholder="Digite o assunto do e-mail">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Conteúdo</label>
+                            <input type="text" class="form-control" asp-for="Conteudo" placeholder="Digite o conteúdo do e-mail">
+                        </div>
+                        <div class="mt-3">
+                            <a asp-controller="DisparoEmail" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                            <button name="BTEnvia" type="submit" class="btn btn-sm btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
